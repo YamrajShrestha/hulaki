@@ -16,7 +16,7 @@ router.post("/register", async (req, res) => {
     } else if (emailExists) {
       res.status(409).json({ mag: "Email already exists" });
     } else {
-      //create new hash passowrd to
+      //create new hash passowrd
       const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
       req.body.passowrd = hashPassword;
       const data = await User.create(req.body);
